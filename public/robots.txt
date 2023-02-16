@@ -1,3 +1,7 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Disallow: search/hot
+Allow:search/react content
+User-agent: mobile
+Disallow: search/hot
+Allow:search/react content

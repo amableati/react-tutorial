@@ -4,14 +4,39 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import Header from "./header";
+import Footer from "./footer";
+import Parent from "./Parent";
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+function tick(){ 
 root.render(
   <React.StrictMode>
+	<Header name="top"/>
     <App />
+	<Parent name="Parent"/>
+	
+	<Footer />
   </React.StrictMode>
 );
+}
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// This will report metrics into a console.
+reportWebVitals(console.log);
+
+
+setInterval(tick, 1000);
+
+
+
+
+
+
+
+
+
+
+
+
