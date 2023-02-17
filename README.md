@@ -1,21 +1,3 @@
-# Getting Started with Create React App
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-## Available Scripts
-In the project directory, you can run:
-### `npm start`
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-### `npm test`
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-### `npm run build`
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
 **Prerequisites:**
 Familiarity with the core HTML, CSS, and JavaScript languages, knowledge of the terminal/command line.
 React uses an HTML-in-JavaScript syntax called JSX (JavaScript and XML). Familiarity with both HTML and JavaScript will help you to learn JSX, and better identify whether bugs in your application are related to JavaScript or to the more specific domain of React.
@@ -53,12 +35,14 @@ In JSX, we can specify attribute values in two ways:
 
 **JSX Comments**
 
-JSX allows us to use comments that begin with /* and ends with */ and wrapping them in curly braces {} just like in the case of JSX expressions.
-```  {/* This is a comment in JSX */}  ```
+JSX allows us to use comments that begin with `/*` and ends with `*/` and wrapping them in curly braces {} just like in the case of JSX expressions.
+
+`  {/* This is a comment in JSX */}  `
 
 **JSX Styling**
 
 React always recommends to use inline styles.
+
 ```
 render(){  
       var i = 5;  
@@ -72,12 +56,15 @@ render(){
 **Immutability Is Important**
 
 - Data Change with Mutation
+
 ```
 var player = {score: 1, name: 'Jeff'};
 player.score = 2;
 // Now player is {score: 2, name: 'Jeff'}
 ```
+
 - Data Change without Mutation
+
 ```
 var player = {score: 1, name: 'Jeff'};
 
@@ -91,12 +78,26 @@ var newPlayer = Object.assign({}, player, {score: 2});
 ## React Installation
 Using the command-line interface (CLI) tool create-react-app. You need to have Node.js installed.
 
-```
-npx create-react-app first-react
-cd first-react
-npm start
-```
-will start being served at a local server at localhost:3000
+**Getting Started with Create React App**
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+**Available Scripts**
+
+In the project directory, you can run: `npm start`
+
+Runs the app in the development mode.
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The page will reload when you make changes.
+You may also see any lint errors in the console.
+
+Launches the test runner in the interactive watch mode. `npm test`
+
+Builds the app for production to the `build` folder. `npm run build`
+
+It correctly bundles React in production mode and optimizes the build for the best performance.
+The build is minified and the filenames include the hashes.
+Your app is ready to be deployed!
 
 ## Application structure
 
@@ -163,6 +164,7 @@ render(element, container[, callback]) - to display the specified HTML code insi
 
 React.js library has two components:
 Function Components
+
 ```
 function Footer() {
   return (
@@ -175,6 +177,7 @@ export default Footer;
 ```
 
 Class Component
+
 ```
 import React from 'react';
 class Header extends React.Component {
@@ -195,10 +198,79 @@ export default Header;
 
 
 ### 2.1 Stateless Components vs Stateful Components
+Stateless Component - have no state. They can also use props.
+
+```
+import React from "react";
+export default class Weak extends React.Component{
+	render(){
+		return(
+		<>
+			<h4>This is {this.props.params.name} component</h4>
+			<div>My age is {this.props.params.age}</div>
+			<div>I reside at {this.props.params.address}</div>
+		</>
+		)
+	}
+}
+```
+
+Stateful Component - that holds some state. both types of components can use props.
+
+```
+import React from "react";
+import Weak from "./Weak";
+export default class Strong extends React.Component{
+	constructor(props){
+		super(props);
+		this.state = {
+			 name : "Atindra",
+			 age : "15",
+			 address : "Bangalore India"
+		};
+	}
+	render(){
+		return(
+		<div>
+		This is {this.props.name} component
+			<Weak params={this.state} />]
+		</div>)
+	}
+}
+```
+
 ## 3. Building Reuseable Components
+Every parent component can pass some information to its child components by giving them props. Props might remind you of HTML attributes, but you can pass any JavaScript value through them, including objects, arrays, and functions.
 ### Passing Data Through Props
+Props are the information that you pass to a JSX tag. For example, className, src, alt, width, and height are some of the props you can pass to an <img>
+
+```
+return (
+    <img
+      className="avatar"
+      src="https://i.imgur.com/1bX5QH6.jpg"
+      alt="Atindra"
+      width={100}
+      height={100}
+    />
+  );
+```
 ### Passing Data to Components
+pass any props to your own components
+
+```
+render(){
+		return(
+		<div>
+		This is {this.props.name} component
+			<Child params={this.state} />
+			<Clock />
+		</div>)
+	}
+```
 ### Passing JSX as children
+Sometimes you’ll want to nest your own components the same way:
+
 ```
 import Child from './Child.js';
 
@@ -226,6 +298,8 @@ export default function Profile() {
 
 ```
 ## 6. React Props Validation
+Props validation is a tool that will help the developers to avoid unexpected bugs. It makes your code more readable. React components used special property PropTypes that help you to catch bugs by validating data types of values passed through props, although it is not necessary to define components with propTypes.
+
 ### Validating Props with PropTypes
 All React component classes that have a constructor should start with a super(props) call.
 ## 7. React State vs Props

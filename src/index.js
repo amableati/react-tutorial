@@ -11,7 +11,7 @@ import Parent from "./Parent";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-function tick(){ 
+//function tick(){ 
 root.render(
   <React.StrictMode>
 	<Header name="top"/>
@@ -21,13 +21,13 @@ root.render(
 	<Footer />
   </React.StrictMode>
 );
-}
+//}
 
 // This will report metrics into a console.
 reportWebVitals(console.log);
 
 
-setInterval(tick, 1000);
+//setInterval(tick, 1000);
 
 
 
