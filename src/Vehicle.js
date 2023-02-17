@@ -1,11 +1,12 @@
 import React from "react";
 import Car from "./Car";
 import Bike from "./Bike";
+import './App.css';
 
 
 function VehicleCar({ children }) {
   return (
-    <div className="card">
+    <div className="panel">
       {children}
     </div>
   );

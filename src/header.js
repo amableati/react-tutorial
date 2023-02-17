@@ -15,7 +15,7 @@ constructor(props){
 
 render(){
   return (
-    <div className="App">
+    <div className="panel">
       <h1>Header</h1>
 	  <p>This is inside {this.state.name} [state]</p>
 	  <p>This is also at {this.props.name} [props]</p>

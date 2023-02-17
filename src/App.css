@@ -1,5 +1,27 @@
-.App {
+.panel {
   text-align: center;
+  border-style: solid;
+  border-color: black;
+  margin: 5px;
+  padding: 5px;
+}
+
+.panel-1 {
+  text-align: center;
+  border-style: solid;
+  border-color: blue;
+  margin-left: 500px;
+  margin-right: 500px;
+  padding: 5px;
+}
+
+.panel-2 {
+  text-align: center;
+  border-style: solid;
+  border-color: orange;
+  margin-left: 100px;
+  margin-right: 100px;
+  padding: 5px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -16,3 +38,4 @@
     transform: rotate(360deg);
   }
 }
+

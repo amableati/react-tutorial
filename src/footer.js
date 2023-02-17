@@ -2,7 +2,7 @@ import './App.css';
 
 function Footer() {
   return (
-    <div className="App">
+    <div>
       <h1>Footer</h1>
     </div>
   );

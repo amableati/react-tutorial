@@ -192,7 +192,7 @@ class Header extends React.Component {
 export default Header;
 ```
 
-## 2. React State & Props
+## 2. React State vs Props
 - Props are read-only components. It is an object which stores the value of attributes of a tag. It is similar to function arguments and can be passed to the component the same way as arguments passed in a function. Props are immutable so we cannot modify the props from inside the component.
 - The state is an updatable structure that is used to contain data or information about the component and can change over time. It can only be accessed or modified inside the component or by the component directly.
 
@@ -241,7 +241,7 @@ export default class Strong extends React.Component{
 
 ## 3. Building Reuseable Components
 Every parent component can pass some information to its child components by giving them props. Props might remind you of HTML attributes, but you can pass any JavaScript value through them, including objects, arrays, and functions.
-### Passing Data Through Props
+### 3.1 Passing Data Through Props
 Props are the information that you pass to a JSX tag. For example, className, src, alt, width, and height are some of the props you can pass to an <img>
 
 ```
@@ -255,7 +255,7 @@ return (
     />
   );
 ```
-### Passing Data to Components
+### 3.2 Passing Data to Components
 pass any props to your own components
 
 ```
@@ -268,7 +268,7 @@ render(){
 		</div>)
 	}
 ```
-### Passing JSX as children
+### 3.3 Passing JSX as children
 Sometimes you’ll want to nest your own components the same way:
 
 ```
@@ -297,19 +297,81 @@ export default function Profile() {
 }
 
 ```
-## 6. React Props Validation
+## 4. React Props Validation
 Props validation is a tool that will help the developers to avoid unexpected bugs. It makes your code more readable. React components used special property PropTypes that help you to catch bugs by validating data types of values passed through props, although it is not necessary to define components with propTypes.
 
-### Validating Props with PropTypes
+[Exercise on PropType](https://github.com/amableati/react-tutorial/blob/master/src/PropTypesValidation.js)
+
+### 4.1 Validating Props with PropTypes
 All React component classes that have a constructor should start with a super(props) call.
-## 7. React State vs Props
-### Managing State
-this.state
-### Bypassing Props with React Context
-## 8. React Constructor
-## 9. React element 
-createElement()
-## 10. React Component API
+## 5. React Constructor
+**points to note about a constructor are:**
+
+- It is not necessary to have a constructor in every component.
+- It is necessary to call super() within the constructor. To set property or use 'this' inside the constructor it is mandatory to call super().
+- Never call setState() inside constructor()
+- Bind events all in one place
+- Avoid Assigning values from this.props to this.state,moreover the constructor function is not always the right place to do API calls
+
+## 6. React Component API
+ReactJS component is a top-level API. It makes the code completely individual and reusable in the application. It includes various methods for:
+
+- Creating elements
+- Transforming elements
+- Fragments
+
+### 6.1 setState()
+method is used to update the state of the component. This method will not replace the state, but only add changes to the original state.
+
+### 6.2 forceUpdate
+to update the component manually
+
+### 6.3 ReactDOM.findDOMNode()
+to manipulate DOM
+
+```
+class ReactAPI extends React.Component {
+   constructor() {
+      super();
+	  this.state = {
+         data: []
+      }
+      this.setStateHandler = this.setStateHandler.bind(this);
+      this.findDomNodeHandler = this.findDomNodeHandler.bind(this);
+	  this.forceUpdateHandler = this.forceUpdateHandler.bind(this);
+   };
+   
+   setStateHandler() {
+      var item = Number.parseInt(Math.random()*10)
+      var myArray = this.state.data.slice();
+	  myArray.push(item);
+      this.setState({data: myArray}); //1st method
+   };
+   
+   forceUpdateHandler() {
+      this.forceUpdate(); //2nd method
+   };
+   
+   findDomNodeHandler() {
+      var myDiv = document.getElementById('myDiv');
+      ReactDOM.findDOMNode(myDiv).style.color = 'green'; //3rd method
+   };
+	
+
+   render() {
+      return (
+         <div className="panel">
+			<p><b>React Component API</b></p>
+			<button onClick = {this.setStateHandler}>SET STATE</button>
+            <h4 id = "myDiv">State Array: {this.state.data}</h4>
+			<button onClick = {this.forceUpdateHandler}>FORCE UPDATE</button>
+            <h4>Random number: {Number.parseInt(Math.random()*10)}</h4>
+            <button onClick = {this.findDomNodeHandler}>CHANGE COLOR OF ARRAY</button>
+         </div>
+      );
+   }
+}
+```
 ## 11. Component Life Cycle
 ### The Component Lifecycle
 Lifecycle methods
@@ -333,10 +395,14 @@ Lifecycle methods
 ### Performance Gains with Code Splitting
 ## 28. Code Sharing in React
 ## 29. React Context
+### [Bypassing Props with React Context](https://denislistiadi.medium.com/react-hooks-bypass-props-with-usecontext-performance-d65ea934859)
 
 
 # React Advance Topics
 ## 1. React Hooks
+### [Managing State](https://beta.reactjs.org/learn/managing-state#reacting-to-input-with-state)
+How to structure your state well, how to keep your state update logic maintainable, and how to share state between distant components.
+this.state
 ## 2. React Flux Concept
 ## 3. React Redux
 ## 4. React Portals

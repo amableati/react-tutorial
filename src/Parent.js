@@ -1,6 +1,7 @@
 import React from "react";
 import Child from "./Child";
 import Clock from "./Clock";
+import './App.css';
 
 //Statefull component
 export default class Parent extends React.Component{
@@ -16,7 +17,7 @@ export default class Parent extends React.Component{
 	
 	render(){
 		return(
-		<div>
+		<div className="panel">
 		This is {this.props.name} component
 			<Child params={this.state} />
 			<Clock />
