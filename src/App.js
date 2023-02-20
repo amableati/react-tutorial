@@ -1,7 +1,7 @@
 import './App.css';
-//import PropTypesValidation from "./PropTypesValidation";
 import Vehicle from "./Vehicle";
 import ReactAPI from "./ReactAPI";
+import ReactLifeCycle from "./ReactLifeCycle";
 
 function App() {
   return (
@@ -10,6 +10,7 @@ function App() {
 	  <h2>Current time is {new Date().toLocaleTimeString()}</h2>
 	  <Vehicle />
 	  <ReactAPI />
+	  <ReactLifeCycle vehicle="truck" />
     </div>
   );
 }

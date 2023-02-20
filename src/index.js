@@ -24,7 +24,7 @@ root.render(
 //}
 
 // This will report metrics into a console.
-reportWebVitals(console.log);
+//reportWebVitals(console.log);
 
 
 //setInterval(tick, 1000);
